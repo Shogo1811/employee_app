@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15  # 使用するPostgreSQLのバージョンを指定
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: sample_user       # ユーザー名
+      POSTGRES_PASSWORD: sample_pass   # パスワード
+      POSTGRES_DB: sample_db           # 初期データベース名
+    ports:
+      - "5432:5432"  # ホストのポート:コンテナのポート
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # データ永続化用のボリューム
+    restart: always  # コンテナが停止した場合に自動再起動
+
+volumes:
+  postgres_data:
+
+
+#　CRUDとは
+# C (Create): 新しいデータを作成する（例: 新しい行をテーブルに追加）。 →Post
+# R (Read): データを読み取る（例: SELECT文でデータを取得）。 →Get
+# U (Update): 既存のデータを更新する（例: UPDATE文で値を変更）。 →Put
+# D (Delete): データを削除する（例: DELETE文で行を削除）。 →Delete
+
+# HTTPメソッド
+# Create → POST: 新しいリソースを作成する。
+# Read → GET: データを取得する。
+# Update → PUT (または PATCH): 既存のリソースを更新する。
+# Delete → DELETE: リソースを削除する。
