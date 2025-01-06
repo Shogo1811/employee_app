@@ -29,6 +29,10 @@ docker rm -f [コンテナID]
 
 Flaskアプリケーションを指定するために、以下を実行します：
 
+※Win環境
+set FLASK_APP=app.py
+
+※Mac環境
 export FLASK_APP=app.py
 
 データベースマイグレーションの初期化
