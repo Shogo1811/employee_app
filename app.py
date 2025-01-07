@@ -10,7 +10,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 # セッション用に必要
-# app.secret_key = 'XXXX'
+app.secret_key = 'XXXX'
 
 # ハードコードされた認証情報
 USERNAME = 'admin'
