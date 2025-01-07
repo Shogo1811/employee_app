@@ -35,8 +35,11 @@ set FLASK_APP=app.py
 ※Mac環境
 export FLASK_APP=app.py
 
-データベースマイグレーションの初期化
+リビジョンテーブルを削除
+docker exec -it postgres-container psql -U sample_user -d sample_db
+DELETE FROM alembic_version;
 
+データベースマイグレーションの初期化
 マイグレーションの初期化
 
 flask db init
@@ -49,11 +52,14 @@ flask db migrate -m "Initial migration for Employ table"
 
 flask db upgrade
 
+
 アプリケーションの起動
 
-アプリケーションを起動するには以下を実行します：
+アプリケーションを起動するには以下を実行します
 
 python app.py
+
+
 
 3. Seedでデータを挿入
 
